@@ -34,7 +34,7 @@ export class CustomerComponent implements OnInit {
   customer: Customer = new Customer();
   emailMessage: string;
 
-  get addresses(): FormArray{
+  get addresses(): FormArray {
     return <FormArray>this.customerForm.get('addresses');
   }
 
@@ -81,6 +81,13 @@ export class CustomerComponent implements OnInit {
     });
   }
 
+  deleteAddress(i: number): void {
+    if (i !== 0) {
+      this.addresses.removeAt(i);
+    } else {
+      alert('Minimum One address required');
+    }
+  }
   populateTestData(): void {
     this.customerForm.patchValue({
       firstName: 'Jack',
